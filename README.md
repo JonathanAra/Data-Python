@@ -12,24 +12,48 @@ Python 3.x
 No additional installation is required. Just clone this repository or download the script.
 
 # Usage
-Run the script using Python from your terminal:
+Save this script in your Text Editor using Python from your terminal:
 
-python read_csv.py
-Replace 'read_.csv' in the script with the path to your CSV file.
+    #!/bin/bash
+
+    #Define the path to your CSV file
+    csv_file="data.csv" 
+
+    #Check if the file exists
+    if [[ -f "$csv_file" ]]; then
+      echo "Reading from $csv_file:"
+      echo ""
+
+    #Read and print the contents of the file line by line
+    while IFS= read -r line
+    do
+           echo "$line"
+        done < "$csv_file"
+    else
+        echo "Error: File '$csv_file' not found."
+      fi
+
+Name and save file .sh
+
+Run the command `chmod +x read_csv.sh` to make the script executable. 
+
+
+`./yourscriptfile.sh`
+Replace 'yourscriptfile' in the script with the name of your .sh file.
 
 # CSV File Format
 The script expects a standard CSV file with comma-separated values. Example format:
 
 Name,Age,City
-Alice,30,New York
-Bob,25,Los Angeles
+- Alice,30,New York
+- Bob,25,Los Angeles
 
 Example
 Given a CSV file with the following content:
 
 Name,Age,City
-Alice,30,New York
-Bob,25,Los Angeles
+- Alice,30,New York
+- Bob,25,Los Angeles
 
 
 The output will be:
@@ -37,14 +61,4 @@ The output will be:
 Name, Age, City
 Alice, 30, New York
 Bob, 25, Los Angeles
-
-# Contributing
-
-Contributions to this project are welcome. Please send pull requests or open an issue for discussion.
-
-License
-[Specify License]
-
-Contact
-For support or queries, please open an issue on this GitHub repository.
 
